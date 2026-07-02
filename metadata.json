@@ -1,0 +1,6 @@
+{
+  "name": "HR Article Generator & Social Scheduler",
+  "description": "An AI-powered application that generates high-quality blog posts on HR topics and handles social media scheduling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
