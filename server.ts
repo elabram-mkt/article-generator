@@ -8,9 +8,11 @@ import dotenv from "dotenv";
 // Load environment variables
 dotenv.config();
 
-const app = express();
+export const app = express();
 const PORT = 3000;
-const DB_PATH = path.join(process.cwd(), "data_db.json");
+const DB_PATH = process.env.VERCEL
+  ? path.join("/tmp", "data_db.json")
+  : path.join(process.cwd(), "data_db.json");
 
 // Parse JSON request bodies
 app.use(express.json());
@@ -299,6 +301,8 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  console.error("Failed to start full-stack server:", err);
-});
+if (!process.env.VERCEL) {
+  startServer().catch((err) => {
+    console.error("Failed to start full-stack server:", err);
+  });
+}
